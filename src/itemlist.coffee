@@ -17,10 +17,10 @@ ItemList = React.createClass
     @setState items: items
 
   componentDidMount: ->
-    @props.collection.on 'save', @saveItem
+    @unsubscribe = @props.collection.stream.onValue @saveItem
 
   componentWillUnmount: ->
-    @props.collection.off 'save', @saveItem
+    @unsubscribe()
 
   render: ->
     if @state.items.length == 0

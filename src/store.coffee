@@ -1,14 +1,10 @@
-{EventEmitter} = require 'events'
+Bacon = require("baconjs").Bacon
 
-class Store extends EventEmitter
-  items: []
-  itemsById: {}
+class Store
+  constructor: ->
+    @stream = new Bacon.Bus()
 
   saveItem: (item) =>
-    #@items.push item
-    @itemsById[item._id] = item
-    @emit 'update', item
+    @stream.push item
 
-stores = {}
-module.exports = (name = 'default') ->
-  stores[name] = stores[name] ? new Store()
+module.exports = new Store()

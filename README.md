@@ -27,7 +27,7 @@ given type cached in the browser. When an item is added or updated, it emits an
     $ # install dependencies
     $ npm install
     $ # compile js (coffee+browserify)
-    $ gulp
+    $ gulp --require coffee-script/register
     $ # serve html & js files vi port 3000
     $ npm start
     $ # go to http://localhost:3000 and click on the buttons
